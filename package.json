@@ -1,0 +1,14 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "test fonction basique en JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "node indexjs"
+  },
+  "author": "vincent",
+  "license": "ISC",
+  "dependencies": {
+    "pigpio": "^0.4.0"
+  }
+}
