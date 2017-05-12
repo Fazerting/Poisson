@@ -37,62 +37,117 @@ io.sockets.on('connection', function (socket) {//gets called whenever a client c
                   diff=n-d;
                 }
               }
-              // if (brightness<1000){
-
-                led.servoWrite(900);// remplacement pwm par servo
+              tempo=100;
+              ava1=1300
+              ava2=1400
+              ava3=1500
+              ava4=1600
+              ava5=1700
+              // setInterval(function () {
+              if (brightness<1000){
+                led.servoWrite(1700);// remplacement pwm par servo
+                led2.servoWrite(1800);// remplacement pwm par servo
+                led3.servoWrite(1900);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1600);// remplacement pwm par servo
+                led2.servoWrite(1700);// remplacement pwm par servo
+                led3.servoWrite(1800);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1700);// remplacement pwm par servo
+                led2.servoWrite(1600);// remplacement pwm par servo
+                led3.servoWrite(1700);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1800);// remplacement pwm par servo
+                led2.servoWrite(1700);// remplacement pwm par servo
+                led3.servoWrite(1600);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1900);// remplacement pwm par servo
+                led2.servoWrite(1800);// remplacement pwm par servo
+                led3.servoWrite(1700);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(2000);// remplacement pwm par servo
+                led2.servoWrite(1900);// remplacement pwm par servo
+                led3.servoWrite(1800);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1900);// remplacement pwm par servo
+                led2.servoWrite(2000);// remplacement pwm par servo
+                led3.servoWrite(1900);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1800);// remplacement pwm par servo
+                led2.servoWrite(1900);// remplacement pwm par servo
+                led3.servoWrite(2000);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+              }
+              if (brightness>2000){
+                led.servoWrite(1100);// remplacement pwm par servo
                 led2.servoWrite(1200);// remplacement pwm par servo
-                led3.servoWrite(1500);// remplacement pwm par servo// remplacement pwm par servo
-                mapause(500);
-                led.servoWrite(1200);// remplacement pwm par servo
-                led2.servoWrite(900);// remplacement pwm par servo
+                led3.servoWrite(1300);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1000);// remplacement pwm par servo
+                led2.servoWrite(1100);// remplacement pwm par servo
                 led3.servoWrite(1200);// remplacement pwm par servo// remplacement pwm par servo
-                mapause(500);
-                led.servoWrite(1500);// remplacement pwm par servo
-                led2.servoWrite(1200);// remplacement pwm par servo
-                led3.servoWrite(900);// remplacement pwm par servo// remplacement pwm par servo
-                mapause(500);
+                mapause(tempo);
+                led.servoWrite(1100);// remplacement pwm par servo
+                led2.servoWrite(1000);// remplacement pwm par servo
+                led3.servoWrite(1100);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
                 led.servoWrite(1200);// remplacement pwm par servo
+                led2.servoWrite(1100);// remplacement pwm par servo
+                led3.servoWrite(1000);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1300);// remplacement pwm par servo
+                led2.servoWrite(1200);// remplacement pwm par servo
+                led3.servoWrite(1100);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1400);// remplacement pwm par servo
+                led2.servoWrite(1300);// remplacement pwm par servo
+                led3.servoWrite(1200);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1300);// remplacement pwm par servo
+                led2.servoWrite(1400);// remplacement pwm par servo
+                led3.servoWrite(1300);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1200);// remplacement pwm par servo
+                led2.servoWrite(1300);// remplacement pwm par servo
+                led3.servoWrite(1400);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+              }
+              if (brightness<=2000 && brightness>=1000){
+                led.servoWrite(1400);// remplacement pwm par servo
                 led2.servoWrite(1500);// remplacement pwm par servo
-                led3.servoWrite(1200);// remplacement pwm par servo// remplacement pwm par servo
-                mapause(500);
-              // }
-              // if (brightness>2000){
-              //   led.servoWrite(1500);// remplacement pwm par servo
-              //   led2.servoWrite(1800);// remplacement pwm par servo
-              //   led3.servoWrite(2100);// remplacement pwm par servo// remplacement pwm par servo
-              //   waitSeconds(tempo);
-              //   led.servoWrite(1800);// remplacement pwm par servo
-              //   led2.servoWrite(1500);// remplacement pwm par servo
-              //   led3.servoWrite(1800);// remplacement pwm par servo// remplacement pwm par servo
-              //   waitSeconds(tempo);
-              //   led.servoWrite(2100);// remplacement pwm par servo
-              //   led2.servoWrite(1800);// remplacement pwm par servo
-              //   led3.servoWrite(1500);// remplacement pwm par servo// remplacement pwm par servo
-              //   waitSeconds(tempo);
-              //   led.servoWrite(1800);// remplacement pwm par servo
-              //   led2.servoWrite(2100);// remplacement pwm par servo
-              //   led3.servoWrite(1800);// remplacement pwm par servo// remplacement pwm par servo
-              //   waitSeconds(tempo);
-              // }
-            //   else{
-            //     led.servoWrite(1200);// remplacement pwm par servo
-            //     led2.servoWrite(1500);// remplacement pwm par servo
-            //     led3.servoWrite(1800);// remplacement pwm par servo// remplacement pwm par servo
-            //     waitSeconds(tempo);
-            //     led.servoWrite(1500);// remplacement pwm par servo
-            //     led2.servoWrite(1200);// remplacement pwm par servo
-            //     led3.servoWrite(1500);// remplacement pwm par servo// remplacement pwm par servo
-            //     waitSeconds(tempo);
-            //     led.servoWrite(1800);// remplacement pwm par servo
-            //     led2.servoWrite(1500);// remplacement pwm par servo
-            //     led3.servoWrite(1200);// remplacement pwm par servo// remplacement pwm par servo
-            //     waitSeconds(tempo);
-            //     led.servoWrite(1500);// remplacement pwm par servo
-            //     led2.servoWrite(1800);// remplacement pwm par servo
-            //     led3.servoWrite(1500);// remplacement pwm par servo// remplacement pwm par servo
-            //     waitSeconds(tempo);
-            // }
+                led3.servoWrite(1600);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1300);// remplacement pwm par servo
+                led2.servoWrite(1400);// remplacement pwm par servo
+                led3.servoWrite(1500);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1400);// remplacement pwm par servo
+                led2.servoWrite(1300);// remplacement pwm par servo
+                led3.servoWrite(1400);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1500);// remplacement pwm par servo
+                led2.servoWrite(1400);// remplacement pwm par servo
+                led3.servoWrite(1300);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1600);// remplacement pwm par servo
+                led2.servoWrite(1500);// remplacement pwm par servo
+                led3.servoWrite(1400);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1700);// remplacement pwm par servo
+                led2.servoWrite(1600);// remplacement pwm par servo
+                led3.servoWrite(1500);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1600);// remplacement pwm par servo
+                led2.servoWrite(1700);// remplacement pwm par servo
+                led3.servoWrite(1600);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+                led.servoWrite(1500);// remplacement pwm par servo
+                led2.servoWrite(1600);// remplacement pwm par servo
+                led3.servoWrite(1700);// remplacement pwm par servo// remplacement pwm par servo
+                mapause(tempo);
+            }
                 io.sockets.emit('led', {value: brightness});
+              // }, 2000);
         });
 
         socket.emit('led', {value: brightness});//send the new client the current brightness
