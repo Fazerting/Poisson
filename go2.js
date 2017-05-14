@@ -21,12 +21,9 @@ var brightness = 0;//static variable to hold the current brightness
 io.sockets.on('connection', function (socket) {//gets called whenever a client connects
         socket.on('led', function (data) {//makes the socket react to 'led' packets by calling this function
                 brightness = data.value;//updates brightness from the data object
+                console.log(brightness);
+                
 
-                //var buf = new Buffer(1);//creates a new 1-byte buffer
-                //buf.writeUInt8(brightness, 0);//writes the pwm value to the buffer
-              //  serialPort.write(buf);//transmits the buffer to the arduino !!!!!!!!!!!!!!!!
-          //    console.log(buf);
-              console.log(brightness);
               function mapause(time)
               {
                 d=new Date();
@@ -38,112 +35,110 @@ io.sockets.on('connection', function (socket) {//gets called whenever a client c
                 }
               }
               tempo=100;
-              ava1=1300
-              ava2=1400
-              ava3=1500
-              ava4=1600
-              ava5=1700
+              reg1=-230
+              reg2=-50
+              reg3=0
               // setInterval(function () {
               if (brightness<1000){
-                led.servoWrite(1700);// remplacement pwm par servo
-                led2.servoWrite(1800);// remplacement pwm par servo
-                led3.servoWrite(1900);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1700);// remplacement pwm par servo
+                led2.servoWrite(reg2+1800);// remplacement pwm par servo
+                led3.servoWrite(reg3+1900);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1600);// remplacement pwm par servo
-                led2.servoWrite(1700);// remplacement pwm par servo
-                led3.servoWrite(1800);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1600);// remplacement pwm par servo
+                led2.servoWrite(reg2+1700);// remplacement pwm par servo
+                led3.servoWrite(reg3+1800);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1700);// remplacement pwm par servo
-                led2.servoWrite(1600);// remplacement pwm par servo
-                led3.servoWrite(1700);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1700);// remplacement pwm par servo
+                led2.servoWrite(reg2+1600);// remplacement pwm par servo
+                led3.servoWrite(reg3+1700);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1800);// remplacement pwm par servo
-                led2.servoWrite(1700);// remplacement pwm par servo
-                led3.servoWrite(1600);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1800);// remplacement pwm par servo
+                led2.servoWrite(reg2+1700);// remplacement pwm par servo
+                led3.servoWrite(reg3+1600);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1900);// remplacement pwm par servo
-                led2.servoWrite(1800);// remplacement pwm par servo
-                led3.servoWrite(1700);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1900);// remplacement pwm par servo
+                led2.servoWrite(reg2+1800);// remplacement pwm par servo
+                led3.servoWrite(reg3+1700);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(2000);// remplacement pwm par servo
-                led2.servoWrite(1900);// remplacement pwm par servo
-                led3.servoWrite(1800);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+2000);// remplacement pwm par servo
+                led2.servoWrite(reg2+1900);// remplacement pwm par servo
+                led3.servoWrite(reg3+1800);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1900);// remplacement pwm par servo
-                led2.servoWrite(2000);// remplacement pwm par servo
-                led3.servoWrite(1900);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1900);// remplacement pwm par servo
+                led2.servoWrite(reg2+2000);// remplacement pwm par servo
+                led3.servoWrite(reg3+1900);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1800);// remplacement pwm par servo
-                led2.servoWrite(1900);// remplacement pwm par servo
-                led3.servoWrite(2000);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1800);// remplacement pwm par servo
+                led2.servoWrite(reg2+1900);// remplacement pwm par servo
+                led3.servoWrite(reg3+2000);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
               }
               if (brightness>2000){
-                led.servoWrite(1100);// remplacement pwm par servo
-                led2.servoWrite(1200);// remplacement pwm par servo
-                led3.servoWrite(1300);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1100);// remplacement pwm par servo
+                led2.servoWrite(reg2+1200);// remplacement pwm par servo
+                led3.servoWrite(reg3+1300);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1000);// remplacement pwm par servo
-                led2.servoWrite(1100);// remplacement pwm par servo
-                led3.servoWrite(1200);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1000);// remplacement pwm par servo
+                led2.servoWrite(reg2+1100);// remplacement pwm par servo
+                led3.servoWrite(reg3+1200);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1100);// remplacement pwm par servo
-                led2.servoWrite(1000);// remplacement pwm par servo
-                led3.servoWrite(1100);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1100);// remplacement pwm par servo
+                led2.servoWrite(reg2+1000);// remplacement pwm par servo
+                led3.servoWrite(reg3+1100);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1200);// remplacement pwm par servo
-                led2.servoWrite(1100);// remplacement pwm par servo
-                led3.servoWrite(1000);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1200);// remplacement pwm par servo
+                led2.servoWrite(reg2+1100);// remplacement pwm par servo
+                led3.servoWrite(reg3+1000);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1300);// remplacement pwm par servo
-                led2.servoWrite(1200);// remplacement pwm par servo
-                led3.servoWrite(1100);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1300);// remplacement pwm par servo
+                led2.servoWrite(reg2+1200);// remplacement pwm par servo
+                led3.servoWrite(reg3+1100);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1400);// remplacement pwm par servo
-                led2.servoWrite(1300);// remplacement pwm par servo
-                led3.servoWrite(1200);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1400);// remplacement pwm par servo
+                led2.servoWrite(reg2+1300);// remplacement pwm par servo
+                led3.servoWrite(reg3+1200);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1300);// remplacement pwm par servo
-                led2.servoWrite(1400);// remplacement pwm par servo
-                led3.servoWrite(1300);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1300);// remplacement pwm par servo
+                led2.servoWrite(reg2+1400);// remplacement pwm par servo
+                led3.servoWrite(reg3+1300);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1200);// remplacement pwm par servo
-                led2.servoWrite(1300);// remplacement pwm par servo
-                led3.servoWrite(1400);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1200);// remplacement pwm par servo
+                led2.servoWrite(reg2+1300);// remplacement pwm par servo
+                led3.servoWrite(reg3+1400);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
               }
               if (brightness<=2000 && brightness>=1000){
-                led.servoWrite(1400);// remplacement pwm par servo
-                led2.servoWrite(1500);// remplacement pwm par servo
-                led3.servoWrite(1600);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1400);// remplacement pwm par servo
+                led2.servoWrite(reg2+1500);// remplacement pwm par servo
+                led3.servoWrite(reg3+1600);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1300);// remplacement pwm par servo
-                led2.servoWrite(1400);// remplacement pwm par servo
-                led3.servoWrite(1500);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1300);// remplacement pwm par servo
+                led2.servoWrite(reg2+1400);// remplacement pwm par servo
+                led3.servoWrite(reg3+1500);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1400);// remplacement pwm par servo
-                led2.servoWrite(1300);// remplacement pwm par servo
-                led3.servoWrite(1400);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1400);// remplacement pwm par servo
+                led2.servoWrite(reg2+1300);// remplacement pwm par servo
+                led3.servoWrite(reg3+1400);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1500);// remplacement pwm par servo
-                led2.servoWrite(1400);// remplacement pwm par servo
-                led3.servoWrite(1300);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1500);// remplacement pwm par servo
+                led2.servoWrite(reg2+1400);// remplacement pwm par servo
+                led3.servoWrite(reg3+1300);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1600);// remplacement pwm par servo
-                led2.servoWrite(1500);// remplacement pwm par servo
-                led3.servoWrite(1400);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1600);// remplacement pwm par servo
+                led2.servoWrite(reg2+1500);// remplacement pwm par servo
+                led3.servoWrite(reg3+1400);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1700);// remplacement pwm par servo
-                led2.servoWrite(1600);// remplacement pwm par servo
-                led3.servoWrite(1500);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1700);// remplacement pwm par servo
+                led2.servoWrite(reg2+1600);// remplacement pwm par servo
+                led3.servoWrite(reg3+1500);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1600);// remplacement pwm par servo
-                led2.servoWrite(1700);// remplacement pwm par servo
-                led3.servoWrite(1600);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1600);// remplacement pwm par servo
+                led2.servoWrite(reg2+1700);// remplacement pwm par servo
+                led3.servoWrite(reg3+1600);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
-                led.servoWrite(1500);// remplacement pwm par servo
-                led2.servoWrite(1600);// remplacement pwm par servo
-                led3.servoWrite(1700);// remplacement pwm par servo// remplacement pwm par servo
+                led.servoWrite(reg1+1500);// remplacement pwm par servo
+                led2.servoWrite(reg2+1600);// remplacement pwm par servo
+                led3.servoWrite(reg3+1700);// remplacement pwm par servo// remplacement pwm par servo
                 mapause(tempo);
             }
                 io.sockets.emit('led', {value: brightness});

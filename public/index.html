@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-        <title>LED Controller</title>
+        <title>FISH Controller</title>
         <meta name="viewport" content="width=400px" />
 
         <script src="socket.io/socket.io.js"></script>
@@ -43,7 +43,7 @@
         });
     });
 </script>
-        <input type="range" id= "inputSlider" min="500" max="2500" value="1500" step="500" oninput="showValue(this.value)" />
+        <input type="range" id= "inputSlider" min="500" max="2500" value="1500" step="200" oninput="showValue(this.value)" />
 
         <br><br><span id="outputText">50</span>
 
