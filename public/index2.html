@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+        <title>FISH Controller</title>
+        <meta name="viewport" content="width=400px" />
+
+        <script src="socket.io/socket.io.js"></script>
+
+        <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="js/underscore-min.js"></script>
+        <script type="text/javascript" src="js/backbone-min.js"></script>
+        <script type="text/javascript" src="js/joystick_view.js"></script>
+
+        <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- TEST DU JOYSTICK*/-->
+    <script type="text/html" id="joystick-view">
+<canvas id="joystickCanvas" width="<%= squareSize %>" height="<%= squareSize %>" style="width: <%= squareSize %>px; height: <%= squareSize %>px;">
+    </canvas>
+</script>
+
+<div id="joystickContent">
+</div>
+<div>
+    x: <span id="xVal"></span><br/>
+    y: <span id="yVal"></span><br/>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var joystickView = new JoystickView(150, function(callbackView){
+            $("#joystickContent").append(callbackView.render().el);
+            setTimeout(function(){
+                callbackView.renderSprite();
+            }, 0);
+        });
+        joystickView.bind("verticalMove", function(y){
+            $("#yVal").html(y);
+        });
+        joystickView.bind("horizontalMove", function(x){
+            $("#xVal").html(x);
+        });
+    });
+</script>
+        <input type="range" id= "inputSlider" min="500" max="2500" value="1500" step="200" oninput="showValue(this.value)" />
+
+        <br><br><span id="outputText">50</span>
+
+        <script type="text/javascript">
+                var socket = io.connect();
+
+                socket.on('led', function (data) {
+                //        document.getElementById("inputSlider").value = data.value;
+                //        document.getElementById("outputText").innerHTML = data.value;
+                });
+
+                function showValue(newValue)
+                {
+                        document.getElementById("xVal").innerHTML=newValue;
+                        socket.emit('led', { value: newValue });
+                }
+
+        </script>
+    </script>
+    <!-- test de récupération des informations du joystick -->
+
+
+
+
+  </body>
+</html>
