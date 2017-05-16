@@ -21,8 +21,7 @@ var tpsPause =100,
     sens1=0,
     sens2=0,
     sens3=0,
-    confirm=5,
-    deplace=5;
+    vardeplace=0;
 
 var timer=require('timers');
 
@@ -49,9 +48,6 @@ function stoppe(){
     val1=1500;
     val2=1500,
     val3=1500;
-    servo1.servoWrite(val1);
-    servo2.servoWrite(val2);
-    servo3.servoWrite(val3);
 
     console.log("stoppe");
 
@@ -121,10 +117,6 @@ function move(){
   console.log("angle du 1",val1);
   console.log("angle du 2",val2);
   console.log("angle du 3",val3);
-
-    servo1.servoWrite(val1);
-    servo2.servoWrite(val2);
-    servo3.servoWrite(val3);
 }
 
 function right(){
@@ -188,9 +180,6 @@ function right(){
   console.log("angle du 1",val1);
   console.log("angle du 2",val2);
   console.log("angle du 3",val3);
-    servo1.servoWrite(val1);
-    servo2.servoWrite(val2);
-    servo3.servoWrite(val3);
 }
 
 function left(){
@@ -254,9 +243,7 @@ function left(){
   console.log("angle du 1",val1);
   console.log("angle du 2",val2);
   console.log("angle du 3",val3);
-    servo1.servoWrite(val1);
-    servo2.servoWrite(val2);
-    servo3.servoWrite(val3);
+
 }
 
 //
@@ -269,7 +256,16 @@ function main(){
 
   // Quand c'est en "AUTO" on bouge la queue
   if(mode){
-
+    console.log("deplace vaut :",vardeplace);
+      if (vardeplace==1){
+        move();
+      }
+      if (vardeplace==2){
+        left();
+      }
+      if (vardeplace==3){
+        right();
+      }
   }
 }
 
@@ -285,10 +281,10 @@ io.sockets.on('connection', function (socket) {//gets called whenever a client c
         //    confirm=deplace
         //    console.log("je passe ici :",deplace);
 
-  setInterval(function(){
+  // setInterval(function(){
      socket.on('deplacer', function (deplace) {
+        vardeplace=deplace
          console.log("je passe la :",deplace);
-         mapause(1000);
          if (deplace==0){
            console.log("deplacement :",deplace);
            stoppe();
@@ -306,18 +302,18 @@ io.sockets.on('connection', function (socket) {//gets called whenever a client c
            if (stop==1){
              init();
            }
-           right();
+           left();
          }
          if (deplace==3){
            console.log("deplacement :",deplace);
            if (stop==1){
              init();
            }
-           left();
+           right();
          }
      });
   //  }
-}, 100);
+// }, 1000);
 
 
       socket.on('deplacement', function (data) {
@@ -347,8 +343,8 @@ io.sockets.on('connection', function (socket) {//gets called whenever a client c
     //   mapause(1000);
     // }
 
-    // var timer=require('timers');
-    //
-    // setInterval(function(){
-    //   main()
-    // }, 1000);
+    var timer=require('timers');
+
+    setInterval(function(){
+      main()
+    }, 100);
