@@ -21,6 +21,9 @@ var tpsPause =100,
     sens1=0,
     sens2=0,
     sens3=0,
+    reg1=-200,
+    reg2=-50,
+    reg3=0,
     vardeplace=0;
 
 var timer=require('timers');
@@ -248,11 +251,9 @@ function left(){
 
 //
 function main(){
-  servo1.servoWrite(val1);
-  servo2.servoWrite(val2);
-  servo3.servoWrite(val3);
-
-  console.log("valeur :",val1);
+  servo1.servoWrite(val1+reg1);
+  servo2.servoWrite(val2+reg2);
+  servo3.servoWrite(val3+reg3);
 
   // Quand c'est en "AUTO" on bouge la queue
   if(mode){
@@ -267,21 +268,13 @@ function main(){
         right();
       }
   }
+  else{
+
+  }
 }
 
 io.sockets.on('connection', function (socket) {//gets called whenever a client connects
-        socket.on('mode', function (data) {//makes the socket react to 'led' packets by calling this function
-            if (data==1){
-              mode=!mode;
-              console.log("Mode :",mode);
-              socket.emit('modeactuel',mode);
-            }
-         });
-        //  while (deplace==confirm){
-        //    confirm=deplace
-        //    console.log("je passe ici :",deplace);
 
-  // setInterval(function(){
      socket.on('deplacer', function (deplace) {
         vardeplace=deplace
          console.log("je passe la :",deplace);
@@ -311,19 +304,27 @@ io.sockets.on('connection', function (socket) {//gets called whenever a client c
            }
            right();
          }
-     });
-  //  }
-// }, 1000);
+     });//Fin du socket principal de déplacement Auto
 
+     socket.on('mode', function (data) {//makes the socket react to 'led' packets by calling this function
+         if (data==1){
+           mode=!mode;
+           console.log("Mode :",mode);
+           socket.emit('modeactuel',mode);
+         }
+      }); //Fin du socket de choix du mode
 
       socket.on('deplacement', function (data) {
               valeur = data.value;
+              console.log("valeur manuel :",deplace);
+
               servo1.servoWrite(valeur);
               servo2.servoWrite(valeur);
               servo3.servoWrite(valeur);
               stop=1;
-            });
-    });
+      }); //Fin du socket de déplacement manuel
+
+}); //Fin de io.sockets
 
     console.log("running test");
 
