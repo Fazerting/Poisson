@@ -285,11 +285,9 @@ io.sockets.on('connection', function (socket) {//gets called whenever a client c
          }
          if (deplace==1){
            console.log("deplacement :",deplace);
-           console.log("stop vaut la :",stop);
            if (stop==1){
              init();
            }
-           console.log("stop vaut et du coup :",stop);
            move();
          }
          if (deplace==2){
@@ -307,7 +305,13 @@ io.sockets.on('connection', function (socket) {//gets called whenever a client c
            left();
          }
        });
-      // test retour joystick
+      socket.on('deplacement', function (data) {
+              valeur = data.value;
+              servo1.servoWrite(valeur);
+              servo2.servoWrite(valeur);
+              servo3.servoWrite(valeur);
+              stop=1;
+            });
     });
 
     console.log("running test");
