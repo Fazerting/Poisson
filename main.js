@@ -27,7 +27,7 @@ io.sockets.on('connection', function (socket) {//gets called whenever a client c
                 setTimeout(function(){
                   led.servoWrite(brightness);// remplacement pwm par servo
                 }, 100);
-                io.sockets.emit('led', {value: brightness});
+                // io.sockets.emit('led', {value: brightness});
         });
 });
 // test retour joystick
