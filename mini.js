@@ -20,7 +20,11 @@ var tpsPause =100,
     val3=1500,
     sens1=0,
     sens2=0,
-    sens3=0;
+    sens3=0,
+    confirm=5,
+    deplace=5;
+
+var timer=require('timers');
 
 function init(){
   val1=1600;
@@ -277,7 +281,14 @@ io.sockets.on('connection', function (socket) {//gets called whenever a client c
               socket.emit('modeactuel',mode);
             }
          });
-       socket.on('deplacer', function (deplace) {
+        //  while (deplace==confirm){
+        //    confirm=deplace
+        //    console.log("je passe ici :",deplace);
+
+  setInterval(function(){
+     socket.on('deplacer', function (deplace) {
+         console.log("je passe la :",deplace);
+         mapause(1000);
          if (deplace==0){
            console.log("deplacement :",deplace);
            stoppe();
@@ -304,7 +315,11 @@ io.sockets.on('connection', function (socket) {//gets called whenever a client c
            }
            left();
          }
-       });
+     });
+  //  }
+}, 100);
+
+
       socket.on('deplacement', function (data) {
               valeur = data.value;
               servo1.servoWrite(valeur);
@@ -332,7 +347,8 @@ io.sockets.on('connection', function (socket) {//gets called whenever a client c
     //   mapause(1000);
     // }
 
-
-    setTimeout(function(){
-      main()
-    }, 1000);
+    // var timer=require('timers');
+    //
+    // setInterval(function(){
+    //   main()
+    // }, 1000);
