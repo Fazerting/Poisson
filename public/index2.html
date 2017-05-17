@@ -27,22 +27,7 @@
     y: <span id="yVal"></span><br/>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        var joystickView = new JoystickView(150, function(callbackView){
-            $("#joystickContent").append(callbackView.render().el);
-            setTimeout(function(){
-                callbackView.renderSprite();
-            }, 0);
-        });
-        joystickView.bind("verticalMove", function(y){
-            $("#yVal").html(y);
-        });
-        joystickView.bind("horizontalMove", function(x){
-            $("#xVal").html(x);
-        });
-    });
-</script>
+
         <input type="range" id= "inputSlider" min="500" max="2500" value="1500" step="200" oninput="showValue(this.value)" />
 
         <br><br><span id="outputText">50</span>

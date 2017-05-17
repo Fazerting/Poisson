@@ -20,6 +20,10 @@ var stop=1,
     val1=1500,
     val2=1500,
     val3=1500,
+    //Valeur pour le mode manuel
+    manu1=1500,
+    manu2=1500,
+    manu3=1500,
     //variable de sens de chaque servo
     sens1=0,
     sens2=0,
@@ -30,9 +34,9 @@ var stop=1,
     reg2=-50,
     reg3=0,
     //Amplitude du chaque mouvement (plus c'est petit plus le mouvement sera précis)
-    ampl=10,
+    ampl=50,
     //Temps entre chaque mouvement effectué
-    tps=10,
+    tps=500,
     //Déphasage entre chaque servo
     phase=100,
     //Plage pour tourner à gauche (500 à 2500, milieu à 1500)
@@ -66,9 +70,7 @@ function stoppe(){
     val1=1500;
     val2=1500,
     val3=1500;
-
     console.log("stoppe");
-
     console.log("angle du 1",val1);
     console.log("angle du 2",val2);
     console.log("angle du 3",val3);
@@ -267,22 +269,21 @@ function left(){
 }
 
 //Fonction pour le mode manuel (à terminer)
-function manuel(valeur){
-  console.log("valeur manuel :",valeur);
-  servo1.servoWrite(valeur);
-  servo2.servoWrite(valeur);
-  servo3.servoWrite(valeur);
+function manuel(value){
+  console.log("valeur manuel :",value);
+  manu3=manu2;
+  manu2=manu1;
+  manu1=value;
   stop=1;
 }
 
 //Fonction principale qui écrit la valeur voulue dans les servos
 function main(){
-  servo1.servoWrite(val1+reg1);
-  servo2.servoWrite(val2+reg2);
-  servo3.servoWrite(val3+reg3);
 
   if(mode){  // Quand c'est en "AUTO" la queue bouge toute seule
-    console.log("deplace vaut :",vardeplace);
+      servo1.servoWrite(val1+reg1);
+      servo2.servoWrite(val2+reg2);
+      servo3.servoWrite(val3+reg3);
       if (vardeplace==1){
         move();
       }
@@ -293,7 +294,10 @@ function main(){
         right();
       }
   }
-  else{  // Quand c'est en "MANUEL" on contrôle la queue
+  else{
+      servo1.servoWrite(manu1+reg1);
+      servo2.servoWrite(manu2+reg2);
+      servo3.servoWrite(manu3+reg3);
   }
 }
 
@@ -337,8 +341,18 @@ io.sockets.on('connection', function (socket) { //début des sockets
          }
       }); //Fin du socket de choix du mode
 
-      socket.on('deplacement', function (data) {
-        manuel(data.value);
+      socket.on('deplacement', function (valeur) {
+        manuel(valeur.value);
+        // val3=1500;
+        // val2=1500;
+        // val1=valeur.value;
+        // setTimeout(function(){
+        //   servo1.servoWrite(val1+reg1);
+        //   servo2.servoWrite(val2+reg2);
+        //   servo3.servoWrite(val3+reg3);
+        // }, 100);
+        stop=1;
+
       }); //Fin du socket de déplacement manuel
 
 }); //Fin de io.sockets
