@@ -36,9 +36,9 @@ io.sockets.on('connection', function (socket) {//gets called whenever a client c
                       counter = end - start;
                   }
               }
-              led.servoWrite(1270);// remplacement pwm par servo
-              led2.servoWrite(1450);// remplacement pwm par servo
-              led3.servoWrite(1500);// remplacement pwm par servo// remplacement pwm par servo
+              led.servoWrite(1700);// remplacement pwm par servo
+              led2.servoWrite(1350);// remplacement pwm par servo
+              led3.servoWrite(1600);// remplacement pwm par servo// remplacement pwm par servo
                 io.sockets.emit('led', {value: brightness});
         });
 
